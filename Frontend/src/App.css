@@ -1,75 +1,217 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+:root {
+  --bg: #f9f9f9;
+  --panel: #ffffff;
+  --text: #333;
+  --border: #e0e0e0;
+  --primary: #4a90e2;
+}
 
-*{
+body.dark {
+  --bg: #1e1e2f;
+  --panel: #2a2a3b;
+  --text: #f0f0f0;
+  --border: #3a3a4f;
+  --primary: #6a9ffb;
+}
+
+* {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 40px;
+  background-color: var(--panel);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  position: relative;
+}
+
+header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.toggle-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+  transition: background 0.3s ease;
+  padding: 8px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.toggle-btn i {
+  font-size: 25px;
+  color: var(--primary);
+}
+
+main {
+  flex: 1;
+  padding: 30px 5vw;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: calc(100vh - 80px); /* 80px = header height */
+}
+
+.panels {
+  display: flex;
+  gap: 40px;
+  flex: 1;
+  overflow: hidden;
+  min-height: 0;
+}
+
+.panel {
+  flex: 1;
+  background-color: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-height: 0;
+}
+
+.panel h2 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 8px;
+}
+
+.code-editor {
+  position: relative;
+  flex: 1;
+  height: 100%;
+  overflow: auto;
+  font-family: monospace;
+  font-size: 15px;
+  color: var(--text);
+  background-color: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px;
   box-sizing: border-box;
 }
 
-html,body,#root{
-  height: 100%;
+.monaco-editor {
   width: 100%;
-}
-
-main{
   height: 100%;
-  width: 100%;
-  display: flex;
-  gap: 1rem;
-  padding: 1rem;
 }
 
-main .left, main .right{
-  height: 100%;
-  flex-basis: 50%;
-  border-radius: 0.7rem;
+/* The response area styles */
+.response-place-holder {
+  color: gray;
+  font-family: monospace;
+  font-size: 15px;
+  font-weight: 300;
 }
 
-main .left{
-  background-color: black;
-  border: none;
-  position: relative;
-  border-radius: 0.7rem;
-}
-
-.left .code{
-  height: 100%;
-  width: 100%;
-  margin: 0;
-  border-radius: 0.7rem;
-}
-.left .code :focus{
+.response {
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 8px;
   outline: none;
+  padding: 15px;
+  padding-left: 30px;
+  height: 100%;
+  overflow-y: auto;
+  resize: none;
+  background-color: var(--bg);
 }
 
-.review{
-  position: absolute;
-  bottom: 1rem;
-  right: 1rem;
-  user-select: none;
-  background-color: rgb(255, 246, 246);
-  color: black;
+textarea:focus,
+textarea:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Button container */
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+button.submit-btn {
+  padding: 16px 50px;
+  background-color: var(--primary);
+  color: white;
+  font-size: 16px;
   font-weight: 500;
-  padding: 0.4rem 1.2rem;
-  border-radius: 0.3rem;
+  border: none;
+  border-radius: 8px;
   cursor: pointer;
-  font-family:'Outfit', 'cursive';
-  font-size: 18px;
+  transition: 0.2s ease;
 }
 
-main .right{
-  background-color: #474E93;
-  padding: 1rem 2rem;
-  font-size: 1.2rem;
-  overflow:auto;
+button.submit-btn:hover {
+  background-color: #357ab8;
 }
 
-main .right::-webkit-scrollbar{
-  display: none;
-}
+@media (max-width: 1024px) {
+  main {
+    padding: 30px 20px;
+  }
 
-@media screen and (max-width:900px){
-  main{
+  .panels {
     flex-direction: column;
+  }
+}
+
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+  }
+
+  .toggle-btn {
+    width: 40px;
+    height: 40px;
+  }
+
+  .toggle-btn i {
+    font-size: 20px;
+  }
+
+  .panels {
+    gap: 5px;
+  }
+
+  main {
+    padding: 10px;
+  }
+
+  .button-container {
+    margin-top: 10px;
+    margin-bottom: 40px;
   }
 }
