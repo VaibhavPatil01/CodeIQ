@@ -10,10 +10,10 @@ Built using **React**, **Express**, and **Google Gemini AI**, this app helps you
 ## 📸 Screenshots
 
 ### 💡 Light Mode  
-<img src="https://i.postimg.cc/Yqfb7pK2/Screenshot-2025-05-01-020315.png" alt="Code Reviewer Screenshot" width="500"/>
+![Light Mode](https://i.postimg.cc/Yqfb7pK2/Screenshot-2025-05-01-020315.png)  
 
 ### 🌙 Dark Mode 
-<img src="https://i.postimg.cc/1tHkCb0J/Screenshot-2025-05-01-020332.png" alt="Code Reviewer Screenshot" width="500"/>
+![Dark Mode](https://i.postimg.cc/1tHkCb0J/Screenshot-2025-05-01-020332.png)  
 
 ## 🛠 Tech Stack
 
